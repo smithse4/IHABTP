@@ -73,6 +73,7 @@ main {
     margin: 0 0 10px 0;
     font-family: 'Dancing Script', sans-serif;
     border-radius: 10px;
+    border: 1px solid rgba(0,0,0, .2)
 }
 
 /* #bone {
