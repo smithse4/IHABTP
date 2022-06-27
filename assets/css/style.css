@@ -1,0 +1,161 @@
+:root {
+    --lavender: #dcd0ff;
+    --citron: #a4ff93;
+    --charcoal: #222222;
+}
+
+/* 
+font-family: 'Homemade Apple', sans-serif;
+font-family: 'Kalam', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Dancing Script', sans-serif;
+*/
+
+body {
+    margin: 0;
+    color: var(--charcoal);
+    background-color: var(--lavender);
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    color: var(--lavender);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .2);
+}
+
+header h1 {
+    font-family: 'Dancing Script', sans-serif;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+#add-bone {
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .2);
+}
+
+#add-bone h2 {
+    margin-bottom: 10px;
+    font-family: 'Dancing Script', sans-serif;
+
+}
+
+#bone-form {
+    display: flex;
+    flex-direction: column; 
+}
+
+#bone-form input, #bone-form textarea {
+    display: flex;
+    flex-direction: column; 
+    padding: 10px;
+    margin: 0 0 10px 0;
+    font-family: 'Dancing Script', sans-serif;
+    border-radius: 10px;
+}
+
+/* #bone {
+    height: 40px;
+} */
+
+#bone-submit {
+    padding: 8px;
+    background-color: var(--lavender);
+    color: white;
+    border: 2px solid var(--citron);
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .1);
+}
+
+#bone-submit:hover {
+    background-color: var(--citron);
+    border: 2px solid var(--lavender);
+    color: white;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .3);
+    cursor: pointer;
+}
+
+.bone-card {
+    max-width: 600px;
+    margin: 16px auto 40px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .2);
+    position: relative;
+}
+
+.bone-card:nth-child(odd):before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 24px solid #fff;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom: 20px solid transparent;
+    left: 32px;
+    bottom: -24px;
+    /* box-shadow: 0 0 10px 0px rgba(0,0,0, .2); */
+}
+
+.bone-card:nth-child(even):before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-right: 24px solid #fff;
+    border-left: 12px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom: 20px solid transparent;
+    right: 32px;
+    bottom: -24px;
+    /* box-shadow: 0 0 10px 0px rgba(0,0,0, .2); */
+}
+
+.bone-card h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 8px 0;
+}
+
+.bone-card-antag {
+    text-shadow: var(--citron) 3px 0 10px;
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 24px;
+}
+
+footer {
+    position: sticky;
+    top: 100vh;
+    background-color: white;
+    color: var(--lavender);
+    padding: 30px;
+    text-align: center;
+}
+
+

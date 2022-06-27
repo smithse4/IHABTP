@@ -5,7 +5,9 @@ const boneSubmit = document.querySelector('#bone-submit');
 const boneList = document.querySelector('#all-bones-list');
 
 
-function collectBone() {
+function collectBone(event) {
+    event.preventDefault();
+    
     console.log('new bone: ')
     let bones = JSON.parse(localStorage.getItem('bones')) || [];
 
@@ -14,9 +16,6 @@ function collectBone() {
         bone: bone.value
     }
 
-    antag.innerHTML = "";
-    bone.innerHTML = "";
-
     console.log('new bone: ', newBone)
 
     bones.push(newBone);
@@ -24,6 +23,9 @@ function collectBone() {
     localStorage.setItem('bones', JSON.stringify(bones))
 
     displayBones();
+
+    antag.value = "";
+    bone.value = "";
 }
 
 function displayBones() {
@@ -34,12 +36,15 @@ function displayBones() {
         for(let i = 0; i < bones.length; i++) {
             let card = document.createElement('div');
             let cardHead = document.createElement('h3');
-            let cardBody = document.createElement('div');
+            // let cardBody = document.createElement('div');
 
-            cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span>`;
-            cardBody.textContent = bones[i].bone;
+            card.setAttribute('class', 'bone-card');
+            // cardBody.setAttribute('class', 'bone-card-body');
 
-            card.append(cardHead, cardBody);
+            cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].bone}`;
+            // cardBody.textContent = bones[i].bone;
+
+            card.append(cardHead);
             boneList.append(card);
         }
 
@@ -49,4 +54,4 @@ function displayBones() {
 displayBones();
 
 
-boneSubmit.addEventListener('click', collectBone);
+boneForm.addEventListener('submit', collectBone);
