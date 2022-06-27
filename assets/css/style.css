@@ -71,15 +71,15 @@ main {
     flex-direction: column; 
     padding: 10px;
     margin: 0 0 10px 0;
-    font-family: 'Dancing Script', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     border-radius: 10px;
     border: 1px solid rgba(0,0,0, .2)
 }
 
-/* #bone {
-    height: 40px;
-} */
+#bone-form input::placeholder, #bone-form textarea::placeholder {
+    font-family: 'Dancing Script', sans-serif;
+}
 
 #bone-submit {
     padding: 8px;
@@ -158,6 +158,7 @@ footer {
     color: var(--lavender);
     padding: 30px;
     text-align: center;
+    box-shadow: 0 0 10px 0px rgba(0,0,0, .2);
 }
 
 
