@@ -1,0 +1,21 @@
+{
+  "name": "ihabtp",
+  "version": "1.0.0",
+  "description": "I have a bone to pick is a place for anyone to anonymously publish their personal gripes, irritations, resentments, etc.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smithse4/IHABTP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smithse4/IHABTP/issues"
+  },
+  "homepage": "https://github.com/smithse4/IHABTP#readme"
+}
