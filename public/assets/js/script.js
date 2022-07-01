@@ -5,22 +5,19 @@ const boneSubmit = document.querySelector('#bone-submit');
 const boneList = document.querySelector('#all-bones-list');
 
 
-function collectBone(event) {
+const collectBone = async function(event) {
     event.preventDefault();
     
-    console.log('new bone: ')
-    let bones = JSON.parse(localStorage.getItem('bones')) || [];
-
     let newBone = {
         antagonist: antag.value,
         bone: bone.value
     }
 
-    console.log('new bone: ', newBone)
-
-    bones.push(newBone);
-
-    localStorage.setItem('bones', JSON.stringify(bones))
+    await fetch(`/api/bones`, {
+        method: 'POST',
+        body: JSON.stringify(newBone),
+        headers: { 'Content-Type': 'application/json' },
+    });
 
     displayBones();
 
@@ -28,30 +25,47 @@ function collectBone(event) {
     bone.value = "";
 }
 
-function displayBones() {
-    let bones = JSON.parse(localStorage.getItem('bones'));
+const getBones = () => {
+    fetch('/api/bones', {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+    }).then((data) => {
+        displayBones(data)
+    })
 
-    if(bones) {
-        boneList.innerHTML = "";
-        for(let i = 0; i < bones.length; i++) {
-            let card = document.createElement('div');
-            let cardHead = document.createElement('h3');
-            // let cardBody = document.createElement('div');
 
-            card.setAttribute('class', 'bone-card');
-            // cardBody.setAttribute('class', 'bone-card-body');
-
-            cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].bone}`;
-            // cardBody.textContent = bones[i].bone;
-
-            card.append(cardHead);
-            boneList.append(card);
-        }
-
-    }
 }
 
-displayBones();
+async function displayBones(data) {
+    let jsonBones = await bones.json();
+    console.log("json bones", jsonBones)
+    // if(bones) {
+    //     boneList.innerHTML = "";
+    //     for(let i = 0; i < bones.length; i++) {
+    //         let card = document.createElement('div');
+    //         let cardHead = document.createElement('h3');
+    //         // let cardBody = document.createElement('div');
+
+    //         card.setAttribute('class', 'bone-card');
+    //         // cardBody.setAttribute('class', 'bone-card-body');
+
+    //         cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].bone}`;
+    //         // cardBody.textContent = bones[i].bone;
+
+    //         card.append(cardHead);
+    //         boneList.append(card);
+    //     }
+
+    // }
+}
+
+// const getAndRenderBones = () => getBones().then(displayBones);
+
+// getAndRenderBones();
+
+getBones()
 
 
 boneForm.addEventListener('submit', collectBone);

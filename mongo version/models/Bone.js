@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const boneSchema = new Schema(
   {
-    boneText: {
+    bone: {
       type: String,
       required: "What's your bone to pick?!",
       minlength: 1,
