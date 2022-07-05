@@ -32,28 +32,18 @@ const getBones = () =>
         'Content-Type': 'application/json',
         },
     })
-//     .then((data) => {
-//         let bonesData = data.json();
-//         console.log("Get bones", bonesData)
-//         displayBones(bonesData)
-//     })
-// }
 
 async function displayBones(data) {
     let bones = await data.json();
-    console.log("Async Bones", bones)
     if(bones) {
         boneList.innerHTML = "";
         for(let i = 0; i < bones.length; i++) {
             let card = document.createElement('div');
             let cardHead = document.createElement('h3');
-            // let cardBody = document.createElement('div');
 
             card.setAttribute('class', 'bone-card');
-            // cardBody.setAttribute('class', 'bone-card-body');
 
             cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].text}`;
-            // cardBody.textContent = bones[i].bone;
 
             card.append(cardHead);
             boneList.append(card);
@@ -65,8 +55,5 @@ async function displayBones(data) {
 const getAndRenderBones = () => getBones().then(displayBones);
 
 getAndRenderBones();
-
-//getBones()
-
 
 boneForm.addEventListener('submit', collectBone);
