@@ -39,7 +39,7 @@ app.delete('/api/bones/:id', (req, res) => {
     fs.writeFileSync('./db/bones.json', JSON.stringify(updatedBones));
     console.log(`Deleted note ${deleteBone}`);
 
-    res.json(updatedbones);
+    res.json(updatedBones);
 });
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

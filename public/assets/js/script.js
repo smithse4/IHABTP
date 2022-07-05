@@ -10,7 +10,7 @@ const collectBone = async function(event) {
     
     let newBone = {
         antagonist: antag.value,
-        bone: bone.value
+        text: bone.value
     }
 
     await fetch(`/api/bones`, {
@@ -25,47 +25,48 @@ const collectBone = async function(event) {
     bone.value = "";
 }
 
-const getBones = () => {
+const getBones = () => 
     fetch('/api/bones', {
         method: 'GET',
         headers: {
         'Content-Type': 'application/json',
         },
-    }).then((data) => {
-        displayBones(data)
     })
-
-
-}
+//     .then((data) => {
+//         let bonesData = data.json();
+//         console.log("Get bones", bonesData)
+//         displayBones(bonesData)
+//     })
+// }
 
 async function displayBones(data) {
-    let jsonBones = await bones.json();
-    console.log("json bones", jsonBones)
-    // if(bones) {
-    //     boneList.innerHTML = "";
-    //     for(let i = 0; i < bones.length; i++) {
-    //         let card = document.createElement('div');
-    //         let cardHead = document.createElement('h3');
-    //         // let cardBody = document.createElement('div');
+    let bones = await data.json();
+    console.log("Async Bones", bones)
+    if(bones) {
+        boneList.innerHTML = "";
+        for(let i = 0; i < bones.length; i++) {
+            let card = document.createElement('div');
+            let cardHead = document.createElement('h3');
+            // let cardBody = document.createElement('div');
 
-    //         card.setAttribute('class', 'bone-card');
-    //         // cardBody.setAttribute('class', 'bone-card-body');
+            card.setAttribute('class', 'bone-card');
+            // cardBody.setAttribute('class', 'bone-card-body');
 
-    //         cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].bone}`;
-    //         // cardBody.textContent = bones[i].bone;
+            cardHead.innerHTML = `I have a bone to pick with <span class="bone-card-antag">${bones[i].antagonist}</span> ${bones[i].text}`;
+            // cardBody.textContent = bones[i].bone;
 
-    //         card.append(cardHead);
-    //         boneList.append(card);
-    //     }
+            card.append(cardHead);
+            boneList.append(card);
+        }
 
-    // }
+    }
 }
 
-// const getAndRenderBones = () => getBones().then(displayBones);
+const getAndRenderBones = () => getBones().then(displayBones);
 
-// getAndRenderBones();
+getAndRenderBones();
 
-getBones()
+//getBones()
 
 
 boneForm.addEventListener('submit', collectBone);
